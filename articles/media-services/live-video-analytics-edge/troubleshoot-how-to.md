@@ -213,9 +213,9 @@ To configure the Live Video Analytics on IoT Edge module to generate debug logs,
 
 1. In the **IoT Edge Modules** section, look for and select **lvaEdge**.
 1. Select **Container Create Options**.
-1. In the **Binds** section, add the following command:
+1. In the **Binds** section inside **HostConfig**, add the following command:
 
-    `/var/local/mediaservices/logs:/var/lib/azuremediaservices/logs`
+    `/var/local/mediaservices/logs:/var/lib/azuremediaservices/logs` e.g. `"HostConfig {"Binds":["/var/local/mediaservices/logs:/var/lib/azuremediaservices/logs"]`
 
     > [!NOTE] 
     > This command binds the logs folders between the Edge device and the container. If you want to collect the logs in a different location, use the following command, replacing **$LOG_LOCATION_ON_EDGE_DEVICE** with the location you want to use:
@@ -228,7 +228,7 @@ To configure the Live Video Analytics on IoT Edge module to generate debug logs,
 
     a. Under the **Modules** table, select **lvaEdge**.  
     b. At the top of the pane, select **Module Identity Twin**. An editable pane opens.  
-    c. Under **desired key**, add the following key/value pair:  
+    c. Under **"properties":{"desired":{**, add the following key/value pair:  
     `"DebugLogsDirectory": "/var/lib/azuremediaservices/logs"`
 
     > [!NOTE] 
